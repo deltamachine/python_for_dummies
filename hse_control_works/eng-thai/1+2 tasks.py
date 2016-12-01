@@ -1,10 +1,11 @@
 import re
 import os
 import json
+import html
 
 def create_thai_eng():
-    os.chdir('C:/Users/Анна/Desktop/control_work/thai_pages')
-    file_names = os.listdir('C:/Users/Анна/Desktop/control_work/thai_pages')
+    os.chdir('C:/Users/Анна/Desktop/google_time/control_work/thai_pages')
+    file_names = os.listdir('C:/Users/Анна/Desktop/google_time/control_work/thai_pages')
     thai_eng = {}
     
     for name in file_names:
@@ -16,12 +17,30 @@ def create_thai_eng():
                     thai = elem[0]
                     eng1 = elem[2].split(';')
                     eng = eng1[0]
+                    thai = clean_word(thai)
+                    eng = clean_word(eng)
                     thai_eng[thai] = eng
                     
     return thai_eng
 
+def clean_word(word):
+    regTag = re.compile('<.*?>', flags=re.DOTALL)
+    regScript = re.compile('<script>.*?</script>', flags=re.DOTALL)
+    regComment = re.compile('<!--.*?-->', flags=re.DOTALL)
+
+    clean_word = regTag.sub("", word)
+    clean_word = regScript.sub("", clean_word)
+    clean_word = regComment.sub("", clean_word)
+    clean_word = re.sub('\[.*?\]', '', clean_word)
+    clean_word = re.sub('\\"', '', clean_word)
+    clean_word = clean_word.strip(' \';:?!"/,.')
+
+    clean_word = html.unescape(clean_word)
+    
+    return clean_word
+
 def create_json (dictionary, string):
-    os.chdir('C:/Users/Анна/Desktop/control_work/')
+    os.chdir('C:/Users/Анна/Desktop/google_time/control_work/')
     data_dict = json.dumps(dictionary)
 
     with open (string, 'w', encoding = 'utf-8') as file:

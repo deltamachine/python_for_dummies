@@ -1,11 +1,25 @@
 <html>
+<link href="/static/bootstrap.min.css" rel="stylesheet" media="screen">
 <title>Англо-тайский словарь</title>    
 	<head>
        
 	   <meta charset="utf-8">
 	   
+	   	<style>
+		
+		div {
+			padding-top: 0px;
+			padding-right: 20px;
+			padding-bottom: 0px;
+			padding-left: 20px;
+			}
+			
+			
+		</style>
+	   
 <div class="page-header">
-	<h2>Результаты поиска (кажется, что-то нашлось) </h2>
+	<center><h1>Результаты поиска</h1>
+	<h3><p> (да, возможно, что-то нашлось) </p></h3></center>
 </div>
        
 </head>
@@ -13,12 +27,17 @@
 <body>
 
 <div>
-<span><p> Возможные варианты перевода: </p></span>
+
+{% if values == 'Not found'%}
+<span><h4>Увы, по вашему запросу ничего не нашлось. Попробуйте снова. </h4></span>
+{% else %}
+<span><h4>Возможные варианты перевода: </h4></span>
 <ul>
 {% for elem in values %}
 <li> {{ elem }} </li>
 {% endfor %}
 </ul>
+{% endif %}
 </div>
 
  </body>

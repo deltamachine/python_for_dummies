@@ -16,8 +16,11 @@ def index():
 def find_translation(key):
     with open ('eng_thai.json', 'r', encoding = 'utf-8') as file:
         f = file.read()
-        data = json.loads (f)
+    data = json.loads (f)
+    try:
         values = data[key]
+    except:
+        values = 'Not found'
     return values
         
 
