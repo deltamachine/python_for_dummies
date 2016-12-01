@@ -1,0 +1,121 @@
+﻿<html>
+<link href="/static/bootstrap.min.css" rel="stylesheet" media="screen">
+<title>Статистика</title>
+    
+	<head>
+       
+	   <meta charset="utf-8">
+	   
+	   <style>
+	 
+		h1 { 
+			font-family: helvetica;
+			}
+		h2 {
+			font-family: helvetica;
+			}
+			
+		.jumbotron {
+			font-family: Timew New Roman;
+			height: 30%;
+			padding: 10px;
+			margin: 0px
+			}
+		div {
+			padding-top: 0px;
+			padding-right: 20px;
+			padding-bottom: 0px;
+			padding-left: 20px;
+			}
+			
+			
+		</style>
+	   
+	   <div class="jumbotron" style="background-color: #ffcf40;">
+		  <center><h1 style="font-size:350%;">Анкета для лексико-типологического исследования<h1>
+			<h2><small style="font-size:150%;">Жесты</small></h2></center>
+		</div>
+		
+<b>		
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Меню</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="http://127.0.0.1:5000/">Главная</a></li>
+		<li><a href="http://127.0.0.1:5000/questions">Анкета</a></li>
+		<li class="active"><a href="http://127.0.0.1:5000/stats">Статистика<span class="sr-only">(current)</span></a></li>
+		<li><a href="http://127.0.0.1:5000/json">JSON</a></li>
+		<li><a href="http://127.0.0.1:5000/search">Поиск</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</b>
+       
+</head>
+  
+<body>
+
+<div class="page-header">
+	<h2>Общая статистика</h2>
+		<p> <h4>Некоторые сведения о том, что тут вообще происходит</h4></p>
+		<p></p>
+</div>
+
+<div class="page-header">
+	<h4>Очень Интересная Информация:</h4>
+		<span style="font-size:120%;">
+			<ul>
+				<li>Количество людей, прошедших наш опрос - {{ num_users }}</li>
+				<li>Количество языков, о которых у нас есть информация - {{ num_lang }}</li>
+			</ul>
+		</span>
+</div>
+
+<div class="page-header">
+	<h4>И вот, зацените еще табличку:</h4>
+<p></p>
+<table>
+<table class="table table-bordered">
+<thead>
+	<tr>
+		<th><center>Фото</center></th>
+		<th><center>Название жеста</center></th>
+		<th><center>Буквальное значение</center></th>
+		<th><center>Пример употребления буквального значения</center></th>
+	</tr>
+</thead>
+
+<tbody>
+	<tr>
+		<td><center><a href="#"><img class="media-object" src="{{url_for('static', filename='1.jpg')}}" style="width:300px" alt="..."></a></center></td>
+		{% for elem in line1 %}
+		<td><p>{{ elem }}</p></td>
+		{% endfor %}
+	</tr>
+	
+	<tr>
+		<td><center><a href="#"><img class="media-object" src="{{url_for('static', filename='2.jpg')}}" style="width:300px" alt="..."></a></center></td>
+		{% for elem in line2 %}
+		<td><div>{{ elem }}</div></td>
+		{% endfor %}
+	</tr>
+</tbody>
+</table>
+	
+</div>
+	 
+ </body>
+ </html>

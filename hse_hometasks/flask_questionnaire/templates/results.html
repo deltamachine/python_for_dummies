@@ -1,0 +1,143 @@
+﻿<html>
+<link href="/static/bootstrap.min.css" rel="stylesheet" media="screen">
+<title>Результаты поиска</title>  
+	<head>
+       
+	   <meta charset="utf-8">
+	   
+	   <style>
+	 
+		h1 { 
+			font-family: helvetica;
+			}
+		h2 {
+			font-family: helvetica;
+			}
+			
+		.jumbotron {
+			font-family: Timew New Roman;
+			height: 30%;
+			padding: 10px;
+			margin: 0px
+			}
+		div {
+			padding-top: 0px;
+			padding-right: 20px;
+			padding-bottom: 0px;
+			padding-left: 20px;
+			}
+			
+			
+		</style>
+	   
+	   <div class="jumbotron" style="background-color: #ffcf40;">
+		  <center><h1 style="font-size:350%;">Анкета для лексико-типологического исследования<h1>
+			<h2><small style="font-size:150%;">Жесты</small></h2></center>
+		</div>
+		
+<b>		
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Меню</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="http://127.0.0.1:5000/">Главная</a></li>
+		<li><a href="http://127.0.0.1:5000/questions">Анкета</a></li>
+		<li><a href="http://127.0.0.1:5000/stats">Статистика</a></li>
+		<li><a href="http://127.0.0.1:5000/json">JSON</a></li>
+		<li class="active"><a href="http://127.0.0.1:5000/search">Поиск <span class="sr-only">(current)</span></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</b>
+       
+</head>
+  
+<body>
+
+<div class="page-header" style="padding-right: 20px; padding-left: 40px;">
+	<h2>Результаты поиска:</h2>
+</div>
+
+{% if '1' in delay %}
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="{{url_for('static', filename='1.jpg')}}" style="width:350px;" alt="...">
+    </a>
+  </div>
+  
+  <div class="media-body">
+  {% if 'gesture' in delay %}
+  <p><span style="font-size:120%;"><b>Название жеста:</b></span></p>
+  
+  <p><span style="font-size:120%;">{{ g }}</span></p>
+  
+  {% endif %}
+  
+  {% if 'definition' in delay %}
+  <p><span style="font-size:120%;"><b>Буквальное значение:</b></span></p>
+  
+  <p><span style="font-size:120%;">{{ d }}</span></p>
+  
+  {% endif %}
+  
+  {% if 'example' in delay %}
+  <p><span style="font-size:120%;"><b>Пример употребления буквального значения:</b></span></p>
+  
+  <p><span style="font-size:120%;">{{ e }}</span></p>
+  
+  {% endif %}
+  
+  </div>
+</div>
+{% endif %}
+
+{% if '2' in delay %}
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="{{url_for('static', filename='2.jpg')}}" style="width:350px;" alt="...">
+    </a>
+  </div>
+  
+  <div class="media-body">
+  {% if 'gesture' in delay %}
+  <p><span style="font-size:120%;"><b>Название жеста:</b></span></p>
+  
+  <p><span style="font-size:120%;">{{ g2 }}</span></p>
+  
+  {% endif %}
+  
+  {% if 'definition' in delay %}
+  <p><span style="font-size:120%;"><b>Буквальное значение:</b></span></p>
+  
+  <p><span style="font-size:120%;">{{ d2 }}</span></p>
+  
+  {% endif %}
+  
+  {% if 'example' in delay %}
+  <p><span style="font-size:120%;"><b>Пример употребления буквального значения:</b></span></p>
+  
+  <p><span style="font-size:120%;">{{ e2 }}</span></p>
+  
+  {% endif %}
+  
+  </div>
+</div>
+{% endif %}
+
+ </body>
+ </html>
