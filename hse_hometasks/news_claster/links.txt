@@ -1,0 +1,8 @@
+https://goo.gl/P5NV7l
+<p>(Глава.*?)<div class="b-source-link">
+https://goo.gl/WBlhR3
+<div class="content" data-show-ads="1" id="a856534">(.*?)<h3>Присоединяйтесь!</h3>
+https://goo.gl/6xrJiJ
+<div itemprop="articleBody" class="post_content" id="content">(.*?)</div><!-- post content -->
+https://goo.gl/EMjkJP
+<div class="article-textBlock js-mediator-article">(.*?)<p>Фото:
