@@ -59,8 +59,8 @@ def ask_corpus(word, values):
         print_link = 'Ссылка на версию для печати (первая страница выдачи): ' + print_link
 
     else:
-        answer = 'Извини, кажется, по твоему запросу ничего не нашлось'
-        print_link = 'Попробуй что-нибудь еще?'
+        answer = 'Извините, кажется, по вашему запросу ничего не нашлось'
+        print_link = 'Попробуйте что-нибудь еще?'
         results = ['Я пытался :(']
 
     return answer, print_link, results
@@ -69,15 +69,15 @@ def ask_corpus(word, values):
 def send_welcome(message):
     bot.send_message(message.chat.id, "Шолэм алэйхем! Я бот, который умеет работать с корпусом языка идиш.")
     bot.send_message(message.chat.id, "Я умею искать как точные вхождения слов, так и словоформы с заданными грамматическими параметрами")
-    bot.send_message(message.chat.id,'Если ты хочешь найти документы с точным вхождением слова, набери "/token слово" - например, "/token הי"')
-    bot.send_message(message.chat.id, 'Если же ты хочешь найти документы с вхождением словоформы с заданными грамматическими параметрами, набери "/wordform слово набор_тегов" - например, "/wordform רויט A,nom,sg"')
-    bot.send_message(message.chat.id, "Если ты не знаешь или не помнишь, как выглядят теги, набери /helptable")
-    bot.send_message(message.chat.id, "Если тебе нужна инструкция по вводу тегов, набери /helptags")
+    bot.send_message(message.chat.id,'Если вы хотите найти документы с точным вхождением слова, наберите "/token слово" - например, "/token הי"')
+    bot.send_message(message.chat.id, 'Если же вы хотите найти документы с вхождением словоформы с заданными грамматическими параметрами, наберите "/wordform слово набор_тегов" - например, "/wordform רויט A,nom,sg"')
+    bot.send_message(message.chat.id, "Если вы не знаете или не помните, как выглядят теги, наберите /helptable")
+    bot.send_message(message.chat.id, "Если вам нужна инструкция по вводу тегов, наберите /helptags")
 
 @bot.message_handler(commands=['helptable'])
 def help_user(message):
     tagtable= open('tagtable.png', 'rb')
-    bot.send_message(message.chat.id, 'Я создал для тебя справочную таблицу со всеми тегами, которые ты можешь использовать в запросе. Вот она:')
+    bot.send_message(message.chat.id, 'Я создал для вас справочную таблицу со всеми тегами, которые вы можете использовать в запросе. Вот она:')
     bot.send_photo(message.chat.id, tagtable)
 
 @bot.message_handler(commands=['helptags'])
@@ -85,12 +85,12 @@ def help_user_with_tags(message):
     bot.send_message(message.chat.id, 'Немного о правилах ввода тегов:')
     bot.send_message(message.chat.id, '1. Теги из одной категории заключаются в скобки и разделяются знаком |, например (sg|pl)')
     bot.send_message(message.chat.id, 'Важное исключение №1: так как в категории "Форма прилагательного" только один тег, заключать в скобки его не надо')
-    bot.send_message(message.chat.id, 'Важное исключение №2: рода выбираются следующим образом - m, f, n, (m|f), "m,n", "f,n", (m|f),n. Я не знаю, что это за странный баг со средним родом, правда.')
+    bot.send_message(message.chat.id, 'Важное исключение №2: рода выбираются следующим образом - m, f, n, (m|f), "m,n", "f,n", (m|f),n. Я не знаю, что это у разработчиков за странный баг со средним родом, правда.')
     bot.send_message(message.chat.id, '2. Группы тегов или одиночные теги из разных категорий разделяются запятыми. Примеры запросов:')
     bot.send_message(message.chat.id, 'N,nom,sg')
     bot.send_message(message.chat.id, 'N,(nom|dat),(sg|pl)')
     bot.send_message(message.chat.id, 'A,sg,(m|f),n,short')
-    bot.send_message(message.chat.id, 'Надеюсь, после этой небольшой инструкции тебе стало понятнее, как со мной работать :)')
+    bot.send_message(message.chat.id, 'Надеюсь, после этой небольшой инструкции вам стало понятнее, как со мной работать :)')
 
 @bot.message_handler(commands=['token'])
 def find_token(message):
